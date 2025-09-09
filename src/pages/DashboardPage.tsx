@@ -5,7 +5,8 @@ function DashboardPage() {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        navigate("/login");
+      localStorage.removeItem("isAuthenticated");
+      navigate("/login");
     };
 
 

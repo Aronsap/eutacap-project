@@ -40,6 +40,18 @@
 }
 
 .error {
-    color: red;
-    font-size:0.9em;
+  color: #d93025;       
+  font-size: 12px;      
+  margin: 6px 0 10px;   
+}
+
+input:invalid,
+input.error {
+  border: 1px solid #d93025;
+  outline: none;
+}
+
+button[disabled] {
+  opacity: 0.6;         
+  cursor: not-allowed; 
 }
