@@ -1,11 +1,11 @@
-import type { ReactElement } from "react";
-import { Navigate } from "react-router-dom";
+import React from "react";
+import { Navigate, useLocation } from "react-router-dom";
 
-type ProtectedRouteProps = { children: ReactElement };
+type Props = { children: React.ReactElement };
 
-export default function ProtectedRoute({ children }: ProtectedRouteProps) {
-  const isAuthenticated = localStorage.getItem("isAuthenticated");
-  return isAuthenticated ? children : <Navigate to="/login" />;
+export default function ProtectedRoute({ children }: Props) {
+  const user = localStorage.getItem("userEmail");
+  const location = useLocation();
+
+  return user ? children : <Navigate to="/login" replace state={{ from: location }} />;
 }
-
-
