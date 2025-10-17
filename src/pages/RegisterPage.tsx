@@ -2,24 +2,24 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 type Props = {
-  onLogin: () => void;
+  onRegister: () => void;
 };
 
-const LoginPage: React.FC<Props> = ({ onLogin }) => {
+const RegisterPage: React.FC<Props> = ({ onRegister }) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Здесь ты можешь добавить проверку
-    onLogin();
+    // Здесь ты можешь добавить сохранение данных
+    onRegister();
     navigate("/dashboard");
   };
 
   return (
     <form onSubmit={handleSubmit} style={{ padding: "40px", textAlign: "center" }}>
-      <h2>Вход</h2>
+      <h2>Регистрация</h2>
       <input
         type="email"
         placeholder="Email"
@@ -36,9 +36,9 @@ const LoginPage: React.FC<Props> = ({ onLogin }) => {
         required
         style={{ display: "block", margin: "10px auto" }}
       />
-      <button type="submit">Войти</button>
+      <button type="submit">Зарегистрироваться</button>
     </form>
   );
 };
 
-export default LoginPage;
+export default RegisterPage;

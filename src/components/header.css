@@ -1,0 +1,116 @@
+/* === ШАПКА И КОНТЕЙНЕРЫ === */
+.uc-header {
+  position: sticky;
+  top: 0;
+  background: #ffffff;
+  border-bottom: 1px solid #eef0f3;
+  z-index: 50;
+}
+
+.uc-header__inner {
+  height: 64px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 16px;
+
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;   /* логотип слева, остальное идёт следом */
+}
+
+.uc-logo {
+  font-weight: 800;
+  letter-spacing: 1px;
+  color: #0f172a;
+  text-decoration: none;
+
+  /* сдвиг логотипа немного вправо */
+  margin-left: 24px;
+}
+
+/* === МЕНЮ СЕРЕДИНЫ === */
+.uc-nav {
+  display: flex;
+  gap: 32px;          /* расстояние между пунктами меню */
+  margin-left: 56px;  /* отступ от логотипа вправо */
+}
+
+/* === ПРАВЫЙ БЛОК === */
+.uc-actions {
+  margin-left: auto;  /* прижимаем к правому краю */
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* === КНОПКИ СПРАВА === */
+.uc-btn {
+  padding: 8px 14px;
+  border-radius: 12px;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  text-decoration: none;
+  color: #0f172a;
+}
+.uc-btn--primary { background: #0f172a; color: #fff; }
+.uc-btn--ghost   { background: #fff; }
+
+/* === ПУНКТЫ МЕНЮ (некликабельные) === */
+.uc-nav__link {
+  color: #64748b;
+  font-weight: 600;
+  padding: 8px 4px;
+  border-radius: 0;
+  position: relative;
+}
+.uc-nav__link--static {
+  cursor: default;
+  user-select: none;
+}
+
+/* подсветка: жирная полоска снизу при наведении */
+.uc-nav__link--static::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 3px;
+  background: #0f172a;
+  border-radius: 9999px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform .2s ease;
+}
+.uc-nav__link--static:hover {
+  color: #0f172a;
+  font-weight: 700;
+}
+.uc-nav__link--static:hover::after {
+  transform: scaleX(1);
+}
+
+/* === ШЕСТЕРЁНКА — БЕЗ АНИМАЦИЙ И БЕЗ РАМКИ/ФОНА === */
+.uc-gear {
+  position: relative;
+  width: 36px;
+  height: 36px;
+  border: 0;                 /* без рамки */
+  background: transparent;   /* без фона */
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  outline: none;
+  color: #0f172a;            /* постоянный цвет */
+}
+.uc-gear__icon {
+  fill: currentColor;
+  transition: none;          /* никаких анимаций */
+}
+/* полностью отключаем «ghost»-слой */
+.uc-ghost { display: none !important; }
+/* и на ховере ничего не меняем */
+.uc-gear:hover .uc-gear__icon { transform: none; }
+.uc-gear:hover { opacity: 1; }
