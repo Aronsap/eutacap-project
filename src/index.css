@@ -11,3 +11,202 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+:root{
+  --bg: #ffffff;
+  --bg-blur: rgba(255,255,255,0.7);
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #3b82f6;
+  --ring: rgba(59,130,246,.25);
+  --border: #e5e7eb;
+}
+
+.site-header{
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+
+  padding: 14px 24px;
+  background: var(--bg-blur);
+  backdrop-filter: saturate(180%) blur(8px);
+  border-bottom: 1px solid var(--border);
+}
+
+.logo{
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.main-nav ul{
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav-link{
+  color: var(--muted);
+  text-decoration: none;
+  font-weight: 500;
+}
+.nav-link:hover{
+  color: var(--text);
+}
+.nav-link.is-active{
+  color: var(--text);
+  position: relative;
+}
+.nav-link.is-active::after{
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -8px;
+  height: 2px;
+  background: var(--text);
+  border-radius: 1px;
+}
+
+.actions{
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 32px;
+  padding: 0 12px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  background: var(--text);
+  color: #fff;
+  font-size: 14px;
+  text-decoration: none;
+  transition: transform .06s ease, box-shadow .06s ease, background .15s ease;
+}
+.btn:hover{ transform: translateY(-1px); }
+.btn:focus{ outline: none; box-shadow: 0 0 0 3px var(--ring); }
+.btn--outline{
+  background: transparent;
+  color: var(--text);
+  border-color: var(--border);
+}
+.btn--outline:hover{ background: #f3f4f6; }
+
+.icon-btn{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px; height: 34px;
+  border-radius: 8px;
+  color: var(--text);
+  text-decoration: none;
+  border: 1px solid var(--border);
+  background: #fff;
+}
+.icon-btn:hover{ background: #f9fafb; }
+.icon-btn:focus{ outline: none; box-shadow: 0 0 0 3px var(--ring); }
+
+
+body { padding-top: 2px; }
+
+/* ====== Layout container (нужен для равных отступов) ====== */
+.container{
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 16px;
+  padding-right: 16px;
+}
+
+/* ====== Offer section (вторая секция со скрина) ====== */
+.offer-section{
+  padding: 56px 0 72px;
+  background: var(--bg);
+  color: var(--text);
+}
+
+/* Шапка секции: eyebrow → заголовок → подзаголовок */
+.offer-head{
+  text-align: center;
+  max-width: 720px;
+  margin: 0 auto 32px;
+}
+.offer-eyebrow{
+  text-transform: uppercase;
+  letter-spacing: .14em;
+  opacity: .7;
+  font-size: 12px;
+  margin-bottom: 8px;
+  color: var(--muted);
+}
+.offer-title{
+  font-size: 32px;
+  line-height: 1.15;
+  font-weight: 800;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.offer-subtitle{
+  font-size: 18px;
+  opacity: .9;
+  margin: 0;
+  color: var(--text);
+}
+
+/* Сетка карточек: мобилка 1 колонка → планшет 2 → десктоп 3 */
+.offer-grid{
+  display: grid;
+  gap: 24px;
+  grid-template-columns: 1fr;
+}
+@media (min-width: 640px){
+  .offer-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 1024px){
+  .offer-grid{ grid-template-columns: repeat(3, 1fr); }
+}
+
+/* Карточки */
+.offer-card{
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 24px;
+  background: #fff;
+  transition: background .2s ease, box-shadow .2s ease, transform .2s ease;
+}
+.offer-card:hover{
+  background: #f9fafb;
+  box-shadow: 0 8px 24px rgba(0,0,0,.12);
+  transform: translateY(-1px);
+}
+
+/* Текст в карточке */
+.offer-card__title{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 8px;
+  color: var(--text);
+}
+.offer-card__arrow{
+  opacity: .6;
+  font-weight: 700;
+}
+.offer-card__text{
+  margin: 0;
+  line-height: 1.5;
+  color: var(--muted);
+}
